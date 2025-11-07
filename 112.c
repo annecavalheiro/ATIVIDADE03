@@ -1,0 +1,16 @@
+// QUESTÃO 12 - Exibir a série de Fibonacci até o n-ésimo termo
+#include <stdio.h>
+int main() {
+    int n, i, a = 1, b = 1, c;
+    printf("Digite quantos termos deseja: ");
+    scanf("%d", &n);
+    printf("Serie de Fibonacci: ");
+    for(i = 1; i <= n; i++) {
+        printf("%d ", a);
+        c = a + b;
+        a = b;
+        b = c;
+    }
+    printf("\n");
+    return 0;
+}

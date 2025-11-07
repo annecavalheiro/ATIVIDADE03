@@ -1,0 +1,88 @@
+# Project: Project2
+# Makefile created by Embarcadero Dev-C++ 6.3
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o 01.o 02.o 03.o 04.o 05.o 06.o 07.o 11.o 12.o 13.o 11.o 112.o 013.o 14.o 15.o 16.o 17.o 18.o 19.o 20.o
+LINKOBJ  = main.o 01.o 02.o 03.o 04.o 05.o 06.o 07.o 11.o 12.o 13.o 11.o 112.o 013.o 14.o 15.o 16.o 17.o 18.o 19.o 20.o
+LIBS     = -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib" -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib" -static-libgcc -mwindows
+INCS     = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include"
+CXXINCS  = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++"
+BIN      = Project2.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+DEL      = C:\Program Files (x86)\Embarcadero\Dev-Cpp\devcpp.exe INTERNAL_DEL
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${DEL} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+01.o: 01.c
+	$(CC) -c 01.c -o 01.o $(CFLAGS)
+
+02.o: 02.c
+	$(CC) -c 02.c -o 02.o $(CFLAGS)
+
+03.o: 03.c
+	$(CC) -c 03.c -o 03.o $(CFLAGS)
+
+04.o: 04.c
+	$(CC) -c 04.c -o 04.o $(CFLAGS)
+
+05.o: 05.c
+	$(CC) -c 05.c -o 05.o $(CFLAGS)
+
+06.o: 06.c
+	$(CC) -c 06.c -o 06.o $(CFLAGS)
+
+07.o: 07.c
+	$(CC) -c 07.c -o 07.o $(CFLAGS)
+
+11.o: 11.c
+	$(CC) -c 11.c -o 11.o $(CFLAGS)
+
+12.o: 12.c
+	$(CC) -c 12.c -o 12.o $(CFLAGS)
+
+13.o: 13.c
+	$(CC) -c 13.c -o 13.o $(CFLAGS)
+
+11.o: 11.c
+	$(CC) -c 11.c -o 11.o $(CFLAGS)
+
+112.o: 112.c
+	$(CC) -c 112.c -o 112.o $(CFLAGS)
+
+013.o: 013.c
+	$(CC) -c 013.c -o 013.o $(CFLAGS)
+
+14.o: 14.c
+	$(CC) -c 14.c -o 14.o $(CFLAGS)
+
+15.o: 15.c
+	$(CC) -c 15.c -o 15.o $(CFLAGS)
+
+16.o: 16.c
+	$(CC) -c 16.c -o 16.o $(CFLAGS)
+
+17.o: 17.c
+	$(CC) -c 17.c -o 17.o $(CFLAGS)
+
+18.o: 18.c
+	$(CC) -c 18.c -o 18.o $(CFLAGS)
+
+19.o: 19.c
+	$(CC) -c 19.c -o 19.o $(CFLAGS)
+
+20.o: 20.c
+	$(CC) -c 20.c -o 20.o $(CFLAGS)
