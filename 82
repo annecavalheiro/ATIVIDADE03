@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+int main()
+{
+    // declaracao de constantes
+    const int MIN = 1;
+    const int MAX = 20;
+
+    // declaracao de variaveis
+    int tamanho;
+    int i, j;
+
+    // entrada
+    printf("Digite o tamanho do quadrado: ");
+    scanf("%d", &tamanho);
+
+    // verifica o tamanho
+    if (tamanho < MIN || tamanho > MAX)
+    {
+        printf("Tamanho invalido!\n");
+    }
+    else
+    {
+        // desenha o quadrado
+        for (i = 1; i <= tamanho; i++)
+        {
+            for (j = 1; j <= tamanho; j++)
+            {
+                if (i == 1 || i == tamanho || j == 1 || j == tamanho)
+                    printf("*");
+                else
+                    printf(" ");
+            }
+
+            printf("\n");
+        }
+    }
+
+    return 0;
+}
