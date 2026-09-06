@@ -1,0 +1,118 @@
+#include <stdio.h>
+#include <locale.h>
+
+int main()
+{
+    // declaração de variáveis
+    int numero;
+    int tipo;
+    int quantidade = 0;
+
+    float preco;
+    float consumo;
+    float total;
+    float maior = 0;
+    float menor = 0;
+
+    float residencial = 0;
+    float comercial = 0;
+    float industrial = 0;
+
+    float somaConsumo = 0;
+    float media;
+
+    // entrada do preço do kWh
+    printf("Digite o preço do kWh: R$ ");
+    scanf("%f", &preco);
+
+    // entrada do primeiro consumidor
+    printf("\nDigite o número do consumidor (0 para encerrar): ");
+    scanf("%d", &numero);
+
+    // estrutura de repetição
+    while (numero != 0)
+    {
+        printf("Digite a quantidade de kWh consumidos: ");
+        scanf("%f", &consumo);
+
+        printf("Digite o tipo de consumidor:\n");
+        printf("1 - Residencial\n");
+        printf("2 - Comercial\n");
+        printf("3 - Industrial\n");
+        printf("Digite o código: ");
+        scanf("%d", &tipo);
+
+        // processamento
+        total = preco * consumo;
+
+        // mostra o total a pagar de cada consumidor
+        printf("\nConsumidor: %d", numero);
+        printf("\nTotal a pagar: R$ %.2f\n", total);
+
+        // primeiro consumo será usado como menor e maior
+        if (quantidade == 0)
+        {
+            maior = consumo;
+            menor = consumo;
+        }
+        else
+        {
+            if (consumo > maior)
+            {
+                maior = consumo;
+            }
+
+            if (consumo < menor)
+            {
+                menor = consumo;
+            }
+        }
+
+        // soma o consumo geral
+        somaConsumo = somaConsumo + consumo;
+
+        // soma o consumo de acordo com o tipo
+        if (tipo == 1)
+        {
+            residencial = residencial + consumo;
+        }
+        else if (tipo == 2)
+        {
+            comercial = comercial + consumo;
+        }
+        else if (tipo == 3)
+        {
+            industrial = industrial + consumo;
+        }
+
+        quantidade++;
+
+        // entrada do próximo consumidor
+        printf("\nDigite o número do próximo consumidor (0 para encerrar): ");
+        scanf("%d", &numero);
+    }
+
+    // processamento da média
+    if (quantidade > 0)
+    {
+        media = somaConsumo / quantidade;
+    }
+    else
+    {
+        media = 0;
+    }
+
+    // saída
+	
+    printf("RESULTADOS\n");
+    printf("Maior consumo: %.2f kWh\n", maior);
+    printf("Menor consumo: %.2f kWh\n", menor);
+
+    printf("\nConsumo residencial: %.2f kWh\n", residencial);
+    printf("Consumo comercial: %.2f kWh\n", comercial);
+    printf("Consumo industrial: %.2f kWh\n", industrial);
+
+    printf("\nMédia geral de consumo: %.2f kWh\n", media);
+
+    return 0;
+}
