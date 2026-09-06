@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    // declaracao de variaveis
+    double x;
+    double cos_serie = 0.0;
+    double termo = 1.0;
+    double cos_math;
+    double diferenca;
+    int sinal = 1;
+    int i = 1;
+
+    // entrada
+    printf("Digite o valor de x (em radianos): ");
+    scanf("%lf", &x);
+
+    // processamento
+    do
+    {
+        cos_serie = cos_serie + sinal * termo;
+
+        termo = termo * (x * x) / ((2 * i - 1) * (2 * i));
+
+        sinal = -sinal;
+        i++;
+
+    } while (i <= 20);
+
+    cos_math = cos(x);
+    diferenca = fabs(cos_serie - cos_math);
+
+    // saida
+    printf("\n--- Resultados ---\n");
+    printf("Valor de x: %.4f rad\n", x);
+    printf("Cosseno pela serie: %.8f\n", cos_serie);
+    printf("Cosseno pela funcao: %.8f\n", cos_math);
+    printf("Diferenca absoluta: %.8f\n", diferenca);
+
+    return 0;
+}
