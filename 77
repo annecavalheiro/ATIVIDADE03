@@ -1,0 +1,83 @@
+#include <stdio.h>
+
+int main()
+{
+    // declaracao de constantes
+    const int FUNCIONARIOS = 20;
+    const float COM_COR_10 = 0.14;
+    const float COM_COR_10_MENOS = 0.13;
+    const float COM_PB_20 = 0.13;
+    const float COM_PB_20_MENOS = 0.12;
+    const float INSS = 0.08;
+    const float IRRF = 0.15;
+
+    // declaracao de variaveis
+    int inscricao;
+    int cores, pretoBranco;
+    int i;
+
+    float salarioMinimo;
+    float limiteIR;
+    float precoCor;
+    float precoPB;
+
+    float comissao;
+    float bruto;
+    float liquido;
+
+    // entrada
+    printf("Salario minimo: ");
+    scanf("%f", &salarioMinimo);
+
+    printf("Limite de isencao do IR: ");
+    scanf("%f", &limiteIR);
+
+    printf("Preco da TV a cores: ");
+    scanf("%f", &precoCor);
+
+    printf("Preco da TV preto e branco: ");
+    scanf("%f", &precoPB);
+
+    // repeticao dos funcionarios
+    for (i = 1; i <= FUNCIONARIOS; i++)
+    {
+        printf("\nFuncionario %d\n", i);
+
+        printf("Numero de inscricao: ");
+        scanf("%d", &inscricao);
+
+        printf("TVs a cores vendidas: ");
+        scanf("%d", &cores);
+
+        printf("TVs preto e branco vendidas: ");
+        scanf("%d", &pretoBranco);
+
+        // calcula a comissao
+        if (cores >= 10)
+            comissao = cores * precoCor * COM_COR_10;
+        else
+            comissao = cores * precoCor * COM_COR_10_MENOS;
+
+        if (pretoBranco >= 20)
+            comissao = comissao + pretoBranco * precoPB * COM_PB_20;
+        else
+            comissao = comissao + pretoBranco * precoPB * COM_PB_20_MENOS;
+
+        // calcula salario bruto
+        bruto = salarioMinimo + comissao;
+
+        // calcula INSS
+        liquido = bruto - bruto * INSS;
+
+        // calcula IRRF
+        if (liquido > limiteIR)
+            liquido = liquido - (liquido - limiteIR) * IRRF;
+
+        // saida
+        printf("\nInscricao: %d\n", inscricao);
+        printf("Salario bruto: R$ %.2f\n", bruto);
+        printf("Salario liquido: R$ %.2f\n", liquido);
+    }
+
+    return 0;
+}
