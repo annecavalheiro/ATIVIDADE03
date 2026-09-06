@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+int main()
+{
+    // declaracao de variaveis
+    double S = 0.0;
+    double fatorial = 1.0;
+    double pot2 = 2.0;
+    double denominador;
+    int sinal = 1;
+    int i = 1;
+
+    // processamento
+    do
+    {
+        fatorial = fatorial * i;
+
+        denominador = pot2 - 1.0;
+
+        S = S + sinal * (fatorial / denominador);
+
+        sinal = -sinal;
+        pot2 = pot2 * 2.0;
+        i++;
+
+    } while (i <= 50);
+
+    // saida
+    printf("O valor da soma S e: %.6f\n", S);
+
+    return 0;
+}
