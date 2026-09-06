@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+int main() {
+    long long numero, original;
+    int verificador;
+    int soma = 0;
+    int multiplicador = 2;
+    int digito, resultado, dv;
+
+    printf("Digite o numero e o digito verificador: ");
+    scanf("%lld %d", &numero, &verificador);
+
+    original = numero;
+
+    while (numero > 0) {
+        digito = numero % 10;
+
+        soma = soma + (digito * multiplicador);
+
+        numero = numero / 10;
+
+        multiplicador++;
+
+        if (multiplicador > 8) {
+            multiplicador = 2;
+        }
+    }
+
+    resultado = soma % 11;
+    dv = 11 - resultado;
+
+    if (dv == 10 || dv == 11) {
+        dv = 0;
+    }
+
+    printf("\nNumero: %lld", original);
+    printf("\nDigito calculado: %d", dv);
+
+    if (dv == verificador) {
+        printf("\nNumero valido!\n");
+    } else {
+        printf("\nNumero invalido!\n");
+    }
+
+    return 0;
+}
