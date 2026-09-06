@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main()
+{
+    // declaracao de variaveis
+    double S = 0.0;
+    double numerador = 100.0;
+    double fatorial = 1.0;
+    int i = 0;
+
+    // processamento
+    do
+    {
+        if (i > 0)
+            fatorial = fatorial * i;
+
+        S = S + numerador / fatorial;
+
+        numerador = numerador - 1.0;
+        i++;
+
+    } while (i < 20);
+
+    // saida
+    printf("O valor da soma dos 20 primeiros termos e: %.6f\n", S);
+
+    return 0;
+}
