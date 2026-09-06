@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    // declaracao de variaveis
+    double pi = 0.0;
+    double denominador = 1.0;
+    double termo;
+    int sinal = 1;
+
+    // repeticao
+    do
+    {
+        termo = 4.0 / denominador;
+
+        if (fabs(termo) >= 0.0001)
+        {
+            pi = pi + sinal * termo;
+            sinal = -sinal;
+            denominador = denominador + 2.0;
+        }
+
+    } while (fabs(termo) >= 0.0001);
+
+    // saida
+    printf("O valor aproximado de pi e: %.6f\n", pi);
+
+    return 0;
+}
