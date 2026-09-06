@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+int main()
+{
+    // declaracao de variaveis
+    int a, b;
+    int digito;
+    int contA[10] = {0};
+    int contB[10] = {0};
+    int i;
+    int igual = 1;
+
+    // entrada
+    printf("Digite o numero A: ");
+    scanf("%d", &a);
+
+    printf("Digite o numero B: ");
+    scanf("%d", &b);
+
+    // conta os digitos de A
+    while (a > 0)
+    {
+        digito = a % 10;
+        contA[digito]++;
+        a = a / 10;
+    }
+
+    // conta os digitos de B
+    while (b > 0)
+    {
+        digito = b % 10;
+        contB[digito]++;
+        b = b / 10;
+    }
+
+    // compara as quantidades
+    for (i = 1; i <= 9; i++)
+    {
+        if (contA[i] != contB[i])
+            igual = 0;
+    }
+
+    // saida
+    if (igual == 1)
+        printf("A e permutacao de B.\n");
+    else
+        printf("A nao e permutacao de B.\n");
+
+    return 0;
+}
