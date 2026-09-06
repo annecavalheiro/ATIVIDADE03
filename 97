@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int main()
+{
+    // declaracao de variaveis
+    double S = 0.0;
+    double numerador = 1.0;
+    double denominador;
+    int base = 15;
+    int sinal = 1;
+
+    // processamento
+    do
+    {
+        denominador = base * base;
+
+        S = S + sinal * (numerador / denominador);
+
+        sinal = -sinal;
+        numerador = numerador * 2.0;
+        base--;
+
+    } while (base >= 1);
+
+    // saida
+    printf("O valor da soma S e: %.4f\n", S);
+
+    return 0;
+}
