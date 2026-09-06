@@ -1,0 +1,82 @@
+#include <stdio.h>
+
+int main()
+{
+    // declaracao de variaveis
+    int inscricao, idade, sexo, experiencia;
+    int homens = 0, mulheres = 0;
+    int homensExp = 0, homens45 = 0;
+    int mulheres35 = 0, soma = 0, menor = 0;
+
+    float media, porcentagem;
+
+    // entrada
+    printf("Inscricao (0 para sair): ");
+    scanf("%d", &inscricao);
+
+    // repeticao
+    while (inscricao != 0)
+    {
+        printf("Idade: ");
+        scanf("%d", &idade);
+
+        printf("Sexo (1-Masculino / 2-Feminino): ");
+        scanf("%d", &sexo);
+
+        printf("Experiencia (1-Sim / 2-Nao): ");
+        scanf("%d", &experiencia);
+
+        // processamento
+        if (sexo == 1)
+        {
+            homens++;
+
+            if (experiencia == 1)
+            {
+                soma += idade;
+                homensExp++;
+            }
+
+            if (idade > 45)
+                homens45++;
+        }
+        else
+        {
+            mulheres++;
+
+            if (idade < 35 && experiencia == 1)
+            {
+                mulheres35++;
+                printf("Mulher do grupo: %d\n", inscricao);
+            }
+
+            if (experiencia == 1 &&
+                (menor == 0 || idade < menor))
+                menor = idade;
+        }
+
+        printf("\nInscricao (0 para sair): ");
+        scanf("%d", &inscricao);
+    }
+
+    // calculos
+    if (homensExp > 0)
+        media = (float)soma / homensExp;
+    else
+        media = 0;
+
+    if (homens > 0)
+        porcentagem = (float)homens45 * 100 / homens;
+    else
+        porcentagem = 0;
+
+    // saida
+    printf("\nHomens: %d\n", homens);
+    printf("Mulheres: %d\n", mulheres);
+    printf("Media dos homens com experiencia: %.2f\n", media);
+    printf("Homens com mais de 45 anos: %.2f%%\n", porcentagem);
+    printf("Mulheres com menos de 35 e experiencia: %d\n", mulheres35);
+    printf("Menor idade entre mulheres com experiencia: %d\n", menor);
+
+    return 0;
+}
