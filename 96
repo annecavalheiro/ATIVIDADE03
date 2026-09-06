@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    // declaracao de variaveis
+    double X, S = 0.0;
+    double expoente, termo;
+    int i = 1;
+
+    // entrada
+    printf("Digite o valor de X: ");
+    scanf("%lf", &X);
+
+    // processamento
+    do
+    {
+        expoente = 26 - i;
+        termo = pow(X, expoente) / i;
+
+        if (i % 2 != 0)
+            S = S + termo;
+        else
+            S = S - termo;
+
+        i++;
+
+    } while (i <= 25);
+
+    // saida
+    printf("O valor do somatorio S e: %.4f\n", S);
+
+    return 0;
+}
