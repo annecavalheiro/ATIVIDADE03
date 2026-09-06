@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main()
+{
+    // declaracao de variaveis
+    double S = 0.0;
+    int numerador = 1;
+    int denominador = 1;
+
+    // processamento
+    while (denominador <= 50)
+    {
+        S = S + (double)numerador / denominador;
+
+        numerador = numerador + 2;
+        denominador++;
+    }
+
+    // saida
+    printf("O valor de S e: %.2f\n", S);
+
+    return 0;
+}
