@@ -1,0 +1,77 @@
+#include <stdio.h>
+
+int main()
+{
+    // declaracao de constantes
+    const int DATAS = 50;
+
+    // declaracao de variaveis
+    int dia, mes, ano;
+    int M, D, A, S;
+    int semana;
+    int i;
+
+    // repeticao das 50 datas
+    for (i = 1; i <= DATAS; i++)
+    {
+        // entrada
+        printf("\nDigite o dia: ");
+        scanf("%d", &dia);
+
+        printf("Digite o mes: ");
+        scanf("%d", &mes);
+
+        printf("Digite o ano: ");
+        scanf("%d", &ano);
+
+        // ajusta janeiro e fevereiro
+        if (mes == 1)
+        {
+            M = 11;
+            ano = ano - 1;
+        }
+        else if (mes == 2)
+        {
+            M = 12;
+            ano = ano - 1;
+        }
+        else
+        {
+            M = mes - 2;
+        }
+
+        // separa o ano
+        D = dia;
+        A = ano % 100;
+        S = ano / 100;
+
+        // calcula o dia da semana
+        semana = ((int)(2.6 * M - 0.1) + D + A + A / 4 + S / 4 - 2 * S) % 7;
+
+        // corrige resultado negativo
+        if (semana < 0)
+        {
+            semana = semana + 7;
+        }
+
+        // saida
+        printf("\nData: %02d/%02d/%d\n", dia, mes, ano);
+
+        if (semana == 0)
+            printf("Dia da semana: Domingo\n");
+        else if (semana == 1)
+            printf("Dia da semana: Segunda-feira\n");
+        else if (semana == 2)
+            printf("Dia da semana: Terca-feira\n");
+        else if (semana == 3)
+            printf("Dia da semana: Quarta-feira\n");
+        else if (semana == 4)
+            printf("Dia da semana: Quinta-feira\n");
+        else if (semana == 5)
+            printf("Dia da semana: Sexta-feira\n");
+        else
+            printf("Dia da semana: Sabado\n");
+    }
+
+    return 0;
+}
