@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main()
+{
+    // declaracao de variaveis
+    double S = 0.0;
+    double numerador = 1000.0;
+    int denominador;
+
+    // processamento
+    for (denominador = 1; denominador <= 50; denominador++)
+    {
+        if (denominador % 2 != 0)
+            S = S + numerador / denominador;
+        else
+            S = S - numerador / denominador;
+
+        numerador = numerador - 3;
+    }
+
+    // saida
+    printf("O valor da soma S e: %.2f\n", S);
+
+    return 0;
+}
