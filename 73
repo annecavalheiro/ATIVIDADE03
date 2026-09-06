@@ -1,0 +1,75 @@
+#include <stdio.h>
+
+int main()
+{
+    // declaracao de variaveis
+    int conta, quantidade, codigo, i;
+    float saldo, minimo, taxa, valor;
+
+    // entrada
+    printf("Numero da conta (0 para sair): ");
+    scanf("%d", &conta);
+
+    // repeticao das contas
+    while (conta != 0)
+    {
+        // entrada dos dados
+        printf("Saldo atual: ");
+        scanf("%f", &saldo);
+
+        printf("Saldo minimo: ");
+        scanf("%f", &minimo);
+
+        printf("Quantidade de transacoes: ");
+        scanf("%d", &quantidade);
+
+        printf("Taxa de servico: ");
+        scanf("%f", &taxa);
+
+        // entrada das transacoes
+        for (i = 1; i <= quantidade; i++)
+        {
+            printf("\nValor da transacao: ");
+            scanf("%f", &valor);
+
+            printf("1 - Deposito\n");
+            printf("2 - Retirada\n");
+            printf("Codigo: ");
+            scanf("%d", &codigo);
+
+            // processamento
+            if (codigo == 1)
+            {
+                saldo = saldo + valor;
+            }
+            else
+            {
+                saldo = saldo - valor;
+            }
+        }
+
+        // verifica o saldo minimo
+        if (saldo < minimo)
+        {
+            saldo = saldo - taxa;
+        }
+
+        // saida
+        printf("\nConta: %d\n", conta);
+
+        if (saldo < 0)
+        {
+            printf("NAO HA FUNDOS\n");
+        }
+        else
+        {
+            printf("Saldo final: R$ %.2f\n", saldo);
+        }
+
+        // entrada da proxima conta
+        printf("\nNumero da conta (0 para sair): ");
+        scanf("%d", &conta);
+    }
+
+    return 0;
+}
