@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+int main()
+{
+    // declaracao de variaveis
+    double S = 0.0;
+    double potencia = 2.0;
+    int denominador = 50;
+
+    // processamento
+    do
+    {
+        S = S + potencia / denominador;
+
+        potencia = potencia * 2;
+        denominador--;
+
+    } while (denominador >= 1);
+
+    // saida
+    printf("O valor de S e: %.2f\n", S);
+
+    return 0;
+}
