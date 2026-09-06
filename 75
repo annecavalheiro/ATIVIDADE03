@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int main()
+{
+    // declaracao de variaveis
+    float preco, ingressos, receita, lucro;
+    float maiorLucro = 0, precoMaior, ingressosMaior;
+    int i;
+
+    // processamento
+    preco = 15;
+    ingressos = 120;
+
+    for (i = 1; i <= 5; i++)
+    {
+        receita = preco * ingressos;
+        lucro = receita - 600;
+
+        // saida
+        printf("Preco: R$ %.2f | Ingressos: %.0f | Lucro: R$ %.2f\n",
+               preco, ingressos, lucro);
+
+        // verifica o maior lucro
+        if (lucro > maiorLucro)
+        {
+            maiorLucro = lucro;
+            precoMaior = preco;
+            ingressosMaior = ingressos;
+        }
+
+        preco = preco - 3;
+        ingressos = ingressos + 26;
+    }
+
+    // saida
+    printf("\nMaior lucro: R$ %.2f\n", maiorLucro);
+    printf("Preco do ingresso: R$ %.2f\n", precoMaior);
+    printf("Numero de ingressos: %.0f\n", ingressosMaior);
+
+    return 0;
+}
