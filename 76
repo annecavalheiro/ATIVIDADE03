@@ -1,0 +1,83 @@
+#include <stdio.h>
+
+int main()
+{
+    // declaracao de constantes
+    const int FLAG = 9999;
+    const int ETAPAS = 3;
+
+    // declaracao de variaveis
+    int equipe;
+    int i;
+
+    float padrao[ETAPAS];
+    float tempo[ETAPAS];
+    float pontos[ETAPAS];
+
+    float total;
+    float maior = -1;
+    int vencedora = 0;
+
+    // entrada
+    printf("Digite os tempos padrao das 3 etapas:\n");
+
+    for (i = 0; i < ETAPAS; i++)
+    {
+        scanf("%f", &padrao[i]);
+    }
+
+    printf("\nNumero da equipe (%d para sair): ", FLAG);
+    scanf("%d", &equipe);
+
+    // repeticao
+    while (equipe != FLAG)
+    {
+        total = 0;
+
+        printf("Digite os tempos da equipe:\n");
+
+        for (i = 0; i < ETAPAS; i++)
+        {
+            scanf("%f", &tempo[i]);
+
+            // calcula a diferenca
+            float delta = tempo[i] - padrao[i];
+
+            if (delta < 0)
+                delta = -delta;
+
+            // calcula os pontos
+            if (delta < 3)
+                pontos[i] = 100;
+            else if (delta < 5)
+                pontos[i] = 80;
+            else
+                pontos[i] = 80 - delta - 5;
+
+            total = total + pontos[i];
+        }
+
+        // saida
+        printf("\nEquipe: %d\n", equipe);
+        printf("Etapa 1: %.2f pontos\n", pontos[0]);
+        printf("Etapa 2: %.2f pontos\n", pontos[1]);
+        printf("Etapa 3: %.2f pontos\n", pontos[2]);
+        printf("Total: %.2f pontos\n", total);
+
+        // verifica a vencedora
+        if (total > maior)
+        {
+            maior = total;
+            vencedora = equipe;
+        }
+
+        printf("\nNumero da equipe (%d para sair): ", FLAG);
+        scanf("%d", &equipe);
+    }
+
+    // saida final
+    printf("\nEquipe vencedora: %d\n", vencedora);
+    printf("Maior pontuacao: %.2f\n", maior);
+
+    return 0;
+}
