@@ -1,0 +1,66 @@
+#include <stdio.h>
+
+int main()
+{
+    // declaracao de constantes
+    const int OPERARIOS = 40;
+    const int MAX_STANDARD = 24;
+    const int MAX_LUXO = 32;
+
+    // declaracao de variaveis
+    int standard, luxo;
+    int radiosStandard, radiosLuxo;
+    int melhorStandard, melhorLuxo;
+    int melhorRadiosStandard, melhorRadiosLuxo;
+
+    float x, y;
+    float lucro, maiorLucro = 0;
+
+    // entrada
+    printf("Lucro de cada radio standard: ");
+    scanf("%f", &x);
+
+    printf("Lucro de cada radio luxo: ");
+    scanf("%f", &y);
+
+    // testa as possibilidades
+    for (standard = 8; standard <= MAX_STANDARD; standard++)
+    {
+        luxo = OPERARIOS - standard;
+
+        if (luxo <= MAX_LUXO)
+        {
+            // calcula a quantidade de radios
+            radiosStandard = standard;
+            radiosLuxo = luxo / 2;
+
+            // calcula o lucro
+            lucro = radiosStandard * x + radiosLuxo * y;
+
+            // verifica o maior lucro
+            if (lucro > maiorLucro)
+            {
+                maiorLucro = lucro;
+
+                melhorStandard = standard;
+                melhorLuxo = luxo;
+
+                melhorRadiosStandard = radiosStandard;
+                melhorRadiosLuxo = radiosLuxo;
+            }
+        }
+    }
+
+    // saida
+    printf("\n--- PRODUCAO IDEAL ---\n");
+
+    printf("Operarios na linha standard: %d\n", melhorStandard);
+    printf("Operarios na linha luxo: %d\n", melhorLuxo);
+
+    printf("Radios standard produzidos: %d\n", melhorRadiosStandard);
+    printf("Radios luxo produzidos: %d\n", melhorRadiosLuxo);
+
+    printf("Lucro maximo: R$ %.2f\n", maiorLucro);
+
+    return 0;
+}
