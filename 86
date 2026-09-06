@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+int main()
+{
+    // declaracao de variaveis
+    int n;
+    int atual, anterior;
+    int tamanho = 1;
+    int maior = 1;
+    int i;
+
+    // entrada
+    printf("Digite a quantidade de numeros: ");
+    scanf("%d", &n);
+
+    printf("Digite o primeiro numero: ");
+    scanf("%d", &anterior);
+
+    // repeticao
+    for (i = 2; i <= n; i++)
+    {
+        printf("Digite o proximo numero: ");
+        scanf("%d", &atual);
+
+        // verifica se esta crescendo
+        if (atual > anterior)
+        {
+            tamanho++;
+
+            if (tamanho > maior)
+                maior = tamanho;
+        }
+        else
+        {
+            tamanho = 1;
+        }
+
+        anterior = atual;
+    }
+
+    // saida
+    printf("Comprimento maximo: %d\n", maior);
+
+    return 0;
+}
