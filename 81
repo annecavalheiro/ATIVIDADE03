@@ -1,0 +1,67 @@
+#include <stdio.h>
+
+int main()
+{
+    // declaracao de constantes
+    const int FLAG = -1;
+
+    // declaracao de variaveis
+    int d1, m1, a1, d2, m2, a2;
+    int dias1, dias2, dias;
+    int i;
+    int mes[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
+
+    // entrada
+    printf("Digite a primeira data: ");
+    scanf("%d %d %d", &d1, &m1, &a1);
+
+    // repeticao
+    while (d1 != FLAG)
+    {
+        printf("Digite a segunda data: ");
+        scanf("%d %d %d", &d2, &m2, &a2);
+
+        // verifica ano bissexto
+        if (a1 % 400 == 0 || (a1 % 4 == 0 && a1 % 100 != 0))
+            mes[1] = 29;
+
+        dias1 = d1;
+
+        for (i = 0; i < m1 - 1; i++)
+            dias1 = dias1 + mes[i];
+
+        // verifica ano bissexto
+        mes[1] = 28;
+
+        if (a2 % 400 == 0 || (a2 % 4 == 0 && a2 % 100 != 0))
+            mes[1] = 29;
+
+        dias2 = d2;
+
+        for (i = 0; i < m2 - 1; i++)
+            dias2 = dias2 + mes[i];
+
+        // calcula a diferenca
+        dias = dias2 - dias1;
+
+        if (a1 != a2)
+        {
+            dias = dias + (a2 - a1) * 365;
+
+            for (i = a1; i < a2; i++)
+            {
+                if (i % 400 == 0 || (i % 4 == 0 && i % 100 != 0))
+                    dias++;
+            }
+        }
+
+        // saida
+        printf("Dias decorridos: %d\n", dias);
+
+        // proxima data
+        printf("\nDigite a primeira data: ");
+        scanf("%d %d %d", &d1, &m1, &a1);
+    }
+
+    return 0;
+}
