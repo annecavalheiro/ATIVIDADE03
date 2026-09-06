@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    // declaracao de variaveis
+    double x;
+    double ex_serie = 0.0;
+    double termo = 1.0;
+    double ex_math;
+    double diferenca;
+    int n = 0;
+    int termos_utilizados = 0;
+
+    // entrada
+    printf("Digite o valor de x: ");
+    scanf("%lf", &x);
+
+    ex_math = exp(x);
+
+    // processamento
+    do
+    {
+        ex_serie = ex_serie + termo;
+        termos_utilizados++;
+
+        n++;
+        termo = termo * x / n;
+
+        diferenca = fabs(ex_serie - ex_math);
+
+    } while (diferenca > 0.0001);
+
+    // saida
+    printf("\n--- Resultados ---\n");
+    printf("Valor de x: %.4f\n", x);
+    printf("Valor calculado pela serie: %.6f\n", ex_serie);
+    printf("Valor calculado por exp(x): %.6f\n", ex_math);
+    printf("Diferenca absoluta: %.6f\n", diferenca);
+    printf("Numero de termos utilizados: %d\n", termos_utilizados);
+
+    return 0;
+}
