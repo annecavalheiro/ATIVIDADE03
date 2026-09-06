@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    // declaracao de variaveis
+    double S = 0.0;
+    double base = 1.0;
+    double termo;
+    double pi;
+    int sinal = 1;
+    int i;
+
+    // processamento
+    for (i = 1; i <= 51; i++)
+    {
+        termo = 1.0 / pow(base, 3);
+
+        S = S + sinal * termo;
+
+        sinal = -sinal;
+        base = base + 2.0;
+    }
+
+    pi = cbrt(S * 32.0);
+
+    // saida
+    printf("O valor aproximado de pi e: %.6f\n", pi);
+
+    return 0;
+}
