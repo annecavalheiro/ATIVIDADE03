@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+int main()
+{
+    // declaracao de constantes
+    const int BASE = 2;
+
+    // declaracao de variaveis
+    int binario;
+    int digito;
+    int decimal = 0;
+    int posicao = 1;
+    int valido = 1;
+
+    // entrada
+    printf("Digite um numero binario: ");
+    scanf("%d", &binario);
+
+    // verifica os digitos
+    while (binario > 0)
+    {
+        digito = binario % 10;
+
+        if (digito != 0 && digito != 1)
+        {
+            valido = 0;
+        }
+
+        decimal = decimal + digito * posicao;
+        posicao = posicao * BASE;
+
+        binario = binario / 10;
+    }
+
+    // saida
+    if (valido == 1)
+        printf("Decimal: %d\n", decimal);
+    else
+        printf("Numero invalido!\n");
+
+    return 0;
+}
