@@ -1,0 +1,173 @@
+#include <stdio.h>
+
+int main()
+{
+    // declaracao de constantes
+    const int FLAG = 0;
+
+    // declaracao de variaveis
+    int operario, pecas;
+    char sexo;
+
+    float salarioMinimo;
+    float salario;
+    float totalFolha = 0;
+    int totalPecas = 0;
+
+    int maiorOperario = 0;
+    float maiorSalario = 0;
+
+    // contadores e somas por classe e sexo
+    int homensA = 0, homensB = 0, homensC = 0;
+    int mulheresA = 0, mulheresB = 0, mulheresC = 0;
+
+    int somaHomensA = 0, somaHomensB = 0, somaHomensC = 0;
+    int somaMulheresA = 0, somaMulheresB = 0, somaMulheresC = 0;
+
+    float mediaHomensA, mediaHomensB, mediaHomensC;
+    float mediaMulheresA, mediaMulheresB, mediaMulheresC;
+
+    // entrada
+    printf("Salario minimo: ");
+    scanf("%f", &salarioMinimo);
+
+    printf("\nNumero do operario (0 para sair): ");
+    scanf("%d", &operario);
+
+    // repeticao
+    while (operario != FLAG)
+    {
+        printf("Numero de pecas: ");
+        scanf("%d", &pecas);
+
+        printf("Sexo (M/F): ");
+        scanf(" %c", &sexo);
+
+        // calcula o salario
+        if (pecas <= 30)
+        {
+            salario = salarioMinimo;
+        }
+        else if (pecas <= 35)
+        {
+            salario = salarioMinimo + (pecas - 30) * salarioMinimo * 0.03;
+        }
+        else
+        {
+            salario = salarioMinimo + (pecas - 30) * salarioMinimo * 0.05;
+        }
+
+        // saida do salario
+        printf("Salario: R$ %.2f\n", salario);
+
+        // calcula o total da folha
+        totalFolha = totalFolha + salario;
+
+        // calcula o total de pecas
+        totalPecas = totalPecas + pecas;
+
+        // verifica o maior salario
+        if (salario > maiorSalario)
+        {
+            maiorSalario = salario;
+            maiorOperario = operario;
+        }
+
+        // separa por classe e sexo
+        if (pecas <= 30)
+        {
+            if (sexo == 'M' || sexo == 'm')
+            {
+                homensA++;
+                somaHomensA = somaHomensA + pecas;
+            }
+            else
+            {
+                mulheresA++;
+                somaMulheresA = somaMulheresA + pecas;
+            }
+        }
+        else if (pecas <= 35)
+        {
+            if (sexo == 'M' || sexo == 'm')
+            {
+                homensB++;
+                somaHomensB = somaHomensB + pecas;
+            }
+            else
+            {
+                mulheresB++;
+                somaMulheresB = somaMulheresB + pecas;
+            }
+        }
+        else
+        {
+            if (sexo == 'M' || sexo == 'm')
+            {
+                homensC++;
+                somaHomensC = somaHomensC + pecas;
+            }
+            else
+            {
+                mulheresC++;
+                somaMulheresC = somaMulheresC + pecas;
+            }
+        }
+
+        // entrada do proximo operario
+        printf("\nNumero do operario (0 para sair): ");
+        scanf("%d", &operario);
+    }
+
+    // calcula as medias
+    if (homensA > 0)
+        mediaHomensA = (float)somaHomensA / homensA;
+    else
+        mediaHomensA = 0;
+
+    if (homensB > 0)
+        mediaHomensB = (float)somaHomensB / homensB;
+    else
+        mediaHomensB = 0;
+
+    if (homensC > 0)
+        mediaHomensC = (float)somaHomensC / homensC;
+    else
+        mediaHomensC = 0;
+
+    if (mulheresA > 0)
+        mediaMulheresA = (float)somaMulheresA / mulheresA;
+    else
+        mediaMulheresA = 0;
+
+    if (mulheresB > 0)
+        mediaMulheresB = (float)somaMulheresB / mulheresB;
+    else
+        mediaMulheresB = 0;
+
+    if (mulheresC > 0)
+        mediaMulheresC = (float)somaMulheresC / mulheresC;
+    else
+        mediaMulheresC = 0;
+
+    // saida final
+    printf("\n--- RESULTADOS ---\n");
+
+    printf("Total da folha: R$ %.2f\n", totalFolha);
+    printf("Total de pecas: %d\n", totalPecas);
+
+    printf("\nMedia dos homens:\n");
+    printf("Classe A: %.2f\n", mediaHomensA);
+    printf("Classe B: %.2f\n", mediaHomensB);
+    printf("Classe C: %.2f\n", mediaHomensC);
+
+    printf("\nMedia das mulheres:\n");
+    printf("Classe A: %.2f\n", mediaMulheresA);
+    printf("Classe B: %.2f\n", mediaMulheresB);
+    printf("Classe C: %.2f\n", mediaMulheresC);
+
+    printf("\nOperario de maior salario: %d\n", maiorOperario);
+    printf("Maior salario: R$ %.2f\n", maiorSalario);
+
+    return 0;
+}
