@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+int main()
+{
+    // declaracao de variaveis
+    int numero;
+    int i;
+    int soma = 0;
+
+    // entrada
+    printf("Digite um numero positivo: ");
+    scanf("%d", &numero);
+
+    // procura os divisores
+    for (i = 1; i < numero; i++)
+    {
+        if (numero % i == 0)
+        {
+            soma = soma + i;
+        }
+    }
+
+    // saida
+    if (soma == numero)
+        printf("O numero e perfeito!\n");
+    else
+        printf("O numero nao e perfeito!\n");
+
+    return 0;
+}
