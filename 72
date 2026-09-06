@@ -1,0 +1,54 @@
+#include <stdio.h>
+int main()
+{
+    // declaração de variáveis
+    float marco1, marco2;
+    float distancia;
+    float tempo;
+    int velocidade;
+
+    // entrada
+    printf("Digite o marco quilométrico da primeira cidade: ");
+    scanf("%f", &marco1);
+
+    printf("Digite o marco quilométrico da segunda cidade: ");
+    scanf("%f", &marco2);
+
+    // estrutura de repetição
+    while (marco1 != marco2)
+    {
+        // processamento
+        distancia = marco2 - marco1;
+
+        printf("Marcos: %.2f km e %.2f km\n", marco1, marco2);
+
+        // velocidades de 20 até 80
+        velocidade = 20;
+
+        while (velocidade <= 80)
+        {
+            // cálculo do tempo
+            tempo = distancia / velocidade;
+
+            // saída somente se o tempo for maior que 2 horas
+            if (tempo > 2)
+            {
+                printf("Velocidade: %d km/h", velocidade);
+                printf(" | Tempo: %.2f horas\n", tempo);
+            }
+
+            velocidade = velocidade + 10;
+        }
+
+        // entrada do próximo par
+        printf("\nDigite o marco da primeira cidade: ");
+        scanf("%f", &marco1);
+
+        printf("Digite o marco da segunda cidade: ");
+        scanf("%f", &marco2);
+    }
+
+    printf("\nPrograma encerrado.\n");
+
+    return 0;
+}
