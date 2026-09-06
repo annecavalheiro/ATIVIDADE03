@@ -1,0 +1,58 @@
+#include <stdio.h>
+
+int main()
+{
+    // declaracao de variaveis
+    double X, S = 0.0;
+    double numerador, denominador;
+    int N, i, k;
+    int sinal = 1;
+    int expoente, fat_base;
+
+    // entrada
+    printf("Digite o valor de X: ");
+    scanf("%lf", &X);
+
+    printf("Digite a quantidade de termos N: ");
+    scanf("%d", &N);
+
+    // processamento
+    i = 1;
+
+    do
+    {
+        if (i == 1)
+        {
+            numerador = X;
+            denominador = 1.0;
+        }
+        else
+        {
+            expoente = 2 * (i - 1);
+            fat_base = 2 * i - 1;
+
+            // calcula X elevado ao expoente
+            numerador = 1.0;
+
+            for (k = 0; k < expoente; k++)
+                numerador = numerador * X;
+
+            // calcula o fatorial
+            denominador = 1.0;
+
+            for (k = 1; k <= fat_base; k++)
+                denominador = denominador * k;
+        }
+
+        S = S + sinal * (numerador / denominador);
+
+        sinal = -sinal;
+        i++;
+
+    } while (i <= N);
+
+    // saida
+    printf("\nO valor do somatorio S para %d termos e: %.6f\n", N, S);
+
+    return 0;
+}
